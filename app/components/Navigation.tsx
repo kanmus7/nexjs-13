@@ -18,13 +18,13 @@ const links = [
 
 export const Navigation = () => {
   return (
-    <header className="bg-gray-100 py-4">
-      <nav className="container mx-auto px-4">
+    <header className="bg-black py-4">
+      <nav className="container mx-auto flex justify-center px-4 ">
         <ul className="flex flex-row gap-4 sm:flex-row sm:gap-10">
           {links.map(({ label, route }) => (
             <li key={route}>
               <Link
-                className="text-xl font-semibold text-gray-800 transition-colors duration-300 hover:text-blue-500 hover:underline"
+                className="text-xl font-semibold text-white transition-colors duration-300 hover:text-blue-500 hover:underline"
                 href={route}
               >
                 {label}

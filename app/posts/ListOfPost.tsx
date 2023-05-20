@@ -1,12 +1,8 @@
 import React from 'react'
-import { LikeButton } from '@components/LikeButton'
+import Link from 'next/link'
 
-type Posts = {
-  userId: number
-  id: number
-  title: string
-  body: string
-}
+import { LikeButton } from '@components/LikeButton'
+import { Posts } from './types'
 
 const fetchPosts = () => {
   return fetch('https://jsonplaceholder.typicode.com/posts').then((res) =>
@@ -20,12 +16,23 @@ export const PostsList = async function ListOfPosts() {
   return (
     <>
       {posts?.slice(0, 5).map((post) => (
-        <article key={post?.id}>
-          <h2 className="text-2xl font-bold text-blue-500">{post.title}</h2>
-          <div className="flex flex-row items-center gap-2">
-            <p className=" max-w-lg">{post.body}</p>
-            <LikeButton id={post.id} />
-          </div>
+        <article
+          key={post?.id}
+          className="p-4 hover:rounded-lg hover:bg-gray-200"
+        >
+          <Link
+            className="flex flex-col gap-2"
+            href={'/posts/[id]'}
+            as={`/posts/${post.id}`}
+          >
+            <h2 className="text-center text-2xl font-bold text-blue-500">
+              {post.title}
+            </h2>
+            <div className="flex-column flex justify-center gap-2">
+              <p className=" max-w-lg text-center">{post.body}</p>
+              <LikeButton id={post.id} />
+            </div>
+          </Link>
         </article>
       ))}
     </>

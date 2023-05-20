@@ -16,7 +16,7 @@ export default function RootLayout({
       </head>
       <body className={inter.className}>
         <Navigation />
-        <main className="p-4">{children}</main>
+        <main className="flex  justify-center p-4 ">{children}</main>
       </body>
     </html>
   )
